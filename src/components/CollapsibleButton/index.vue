@@ -34,10 +34,6 @@ export default {
     },
     translateItems() {
       const baseBottom = 44;
-      console.log(
-        baseBottom + (this.isExpanded ? 40 : 0),
-        this.$refs.container
-      );
       this.$refs.container.children.forEach((el, idx) => {
         if (!el.className.includes("inner-item")) return;
         el.style.bottom = baseBottom + (this.isExpanded ? idx * 40 : 0) + "px";
