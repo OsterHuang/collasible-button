@@ -34,10 +34,12 @@ export default {
     },
     translateItems() {
       const baseBottom = 44;
+      const qty = this.$refs.container.children.length;
       this.$refs.container.children.forEach((el, idx) => {
         if (!el.className.includes("inner-item")) return;
         el.style.bottom = baseBottom + (this.isExpanded ? idx * 40 : 0) + "px";
         el.style.opacity = this.isExpanded ? 1 : 0;
+        el.style.transitionDuration = 1 - (idx * 0.1) / qty + "s";
       });
     }
   }
@@ -64,8 +66,8 @@ export default {
     border-radius 20px
     background-color #ccc
 
-    transition transform 0.3s ease-out
-    transition-delay 0.3s
+    transition transform 0.5s ease-out
+    transition-delay 0.15s
     transform rotate(90deg)
     &.expanded
       transform rotate(270deg)
@@ -74,6 +76,8 @@ export default {
     position fixed
     right 22px
     z-index -1
+
     transition all 0.5s
     opacity 0
+    background-color white
 </style>
